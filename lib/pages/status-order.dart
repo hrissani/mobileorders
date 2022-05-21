@@ -1,24 +1,21 @@
-
 import 'package:flutter/material.dart';
-import 'package:mobileorders/widgets/image_container.dart';
+import 'package:mobileorders/widgets/app_bar.dart';
 
-import '../widgets/app_bar.dart';
-
-class Catalog extends StatelessWidget {
-  const Catalog({ Key? key }) : super(key: key);
+class StatusOrder extends StatelessWidget {
+  const StatusOrder({ Key? key }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: SafeArea(
         child: Column(children: [
-          AppBarCustom(title: "Catalog"),
+          AppBarCustom(title: "Status orders"),
           Expanded(child: _listView())
-        ]),
+        ],)
       ),
     );
   }
-  Widget _listView(){
+    Widget _listView(){
     return ListView.builder(
       itemCount: 18,
       itemBuilder: (context, index){
@@ -30,9 +27,9 @@ class Catalog extends StatelessWidget {
     return Container(
       child: Row(
         children: [
-          ImageCustomContainer(
-            imageUrl: ""
-          ),
+          // ImageCustomContainer(
+          //   imageUrl: ""
+          // ),
           Column(
             children: [
               Text("Title"),

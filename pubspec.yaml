@@ -46,6 +46,19 @@ dependencies:
   #   sdk: flutter
   # intl: ^0.17.0
   # flutter_localized_locales: ^2.0.1
+  ## Нужно для того чтобы не было белого экрана на андроид
+  flutter_native_splash: ^2.1.6
+  ##date
+  intl: ^0.17.0
+
+  
+## зорошо работает на Android но не на ios нужно удалять перед пелизам на ios
+flutter_native_splash:
+    image: lib/assets/images/launch_splash.png
+    color: "292C3C"
+    ios: false
+    android_gravity: center
+    # web_image_mode: center  
 
 dev_dependencies:
   flutter_test:
