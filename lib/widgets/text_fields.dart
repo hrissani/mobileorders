@@ -7,19 +7,21 @@ class TextFieldCustom extends StatelessWidget {
   String helperText;
   bool noerrore;
   TextEditingController textEditingController;
+  // VoidCallback erroreField;
   TextFieldCustom({ 
     Key? key , 
     required this.hint1,
     required this.helperText,
     required this.textEditingController,
-    required this.noerrore
+    required this.noerrore,
+    // required this.erroreField
   }) : super(key: key);
 
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      child: TextField(
+      child: TextFormField(
         controller: textEditingController,
         decoration: InputDecoration(
             border: OutlineInputBorder(
@@ -29,7 +31,11 @@ class TextFieldCustom extends StatelessWidget {
             // icon: Icon(Icons.login),
             hintText: hint1,
             helperText: helperText,
-        )
+        ),
+        validator: (value){
+          // if(value != null)
+          //   if (value.isEmpty) return erroreField();
+        }
       ),
     );
   }

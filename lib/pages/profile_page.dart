@@ -3,6 +3,10 @@ import 'package:flutter/material.dart';
 import 'package:mobileorders/pages/edit_profile_page.dart';
 import 'package:mobileorders/widgets/app_bar.dart';
 import 'package:mobileorders/widgets/buttun.dart';
+import 'package:provider/provider.dart';
+
+import '../bi/user/user_provider.dart';
+import '../repository/repository.dart';
 
 class ProfilePage extends StatelessWidget {
   const ProfilePage({ Key? key }) : super(key: key);
@@ -13,10 +17,10 @@ class ProfilePage extends StatelessWidget {
       body: SafeArea(
         child: Column(
           children: [
-            AppBarCustom(title: "Profile"),
+            const AppBarCustom(title: "Profile"),
             // /profileimage
             Container(
-              child: _description(),
+              child: _description(Provider.of<UserProvider>(context, listen: false)),
             ),
             CustomButton(
               text: "Редактировать профиль", 
@@ -30,11 +34,12 @@ class ProfilePage extends StatelessWidget {
     );
   }
 
-  Widget _description(){
+  Widget _description(UserProvider providerUser){
+    
     return Column(
       children: [
-        _textDescription("имя пользователя","Настя"),
-        _textDescription("фамилия пользователя","Фамилия"),
+        _textDescription("имя пользователя","${providerUser.user}"),
+        _textDescription("логин пользователя","${providerUser.email}"),
         _textDescription("дата рождения","19.08.1967")
       ],
     );
