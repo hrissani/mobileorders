@@ -19,7 +19,7 @@ class Orders extends ChangeNotifier{
 
   }
   ///Вставить заказ
-  setOrder(){
+  createOrder({required VoidCallback create}){
 
   }
   ///Возвращает один заказ для просмотра описания

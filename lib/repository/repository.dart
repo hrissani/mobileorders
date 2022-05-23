@@ -1,6 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
+import '../bi/orders/model_order.dart';
 import 'api/api_app.dart';
 import 'database/database.dart';
 
@@ -43,7 +44,7 @@ class RespositoryApp{
     );
   }
 
-  createOrder(){
+  createOrder(Order order){
 
   }
 

@@ -5,6 +5,7 @@ import 'package:mobileorders/widgets/app_bar.dart';
 import 'package:mobileorders/widgets/buttun.dart';
 import 'package:provider/provider.dart';
 
+import '../bi/profile/profile.dart';
 import '../bi/user/user_provider.dart';
 import '../repository/repository.dart';
 
@@ -18,7 +19,8 @@ class ProfilePage extends StatelessWidget {
         child: Column(
           children: [
             const AppBarCustom(title: "Profile"),
-            // /profileimage
+            // /profileimage 
+            _image(),
             Container(
               child: _description(Provider.of<UserProvider>(context, listen: false)),
             ),
@@ -30,6 +32,28 @@ class ProfilePage extends StatelessWidget {
             )
           ],
         ),
+      ),
+    );
+  }
+ static const AssetImage imageProf = AssetImage('images/avatar.png');
+  Widget _image(){
+    // context.read<Profile>().getImageUrl()
+    
+    return Container(
+      height: 56,
+      width: 56,
+      margin:
+          EdgeInsets.symmetric(horizontal: 16),
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(100),
+        color: Colors.white,
+      ),
+      alignment: Alignment.center,
+      child: ImageIcon(
+        imageProf,
+        // IconsUpDesign.camera,
+        // size: 24,
+        color: Colors.grey,
       ),
     );
   }
