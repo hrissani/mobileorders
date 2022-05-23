@@ -72,7 +72,9 @@ dev_dependencies:
   ### Diagram UML for code нужен только при авто генерации UML из кода
   # dcdg: ^4.0.0
   
-  # keytool -list -v -keystore "\Users\boriskulagin\Desktop\mobileorders\android\.android\debug.keystore" -alias androiddebugkey -storepass android -keypass android
+  ## Он всегда лежить в корневом каталоге в пользователе, потому что это debug ключ
+  # keytool -list -v -keystore "C:\Users\k4fos\.android\debug.keystore" -alias androiddebugkey -storepass android -keypass android
+
 
 flutter:
 
