@@ -17,7 +17,7 @@ class MoreInfoOrder extends StatelessWidget {
     return Scaffold(
       body: SafeArea(
         child: Column(children: [
-          const AppBarCustom(title: ""),
+          const AppBarCustom(title: "Подробнее"),
           Expanded(child: _content(orderModel)),
           CustomButton(text: "Заказать", onTap: (){
             Navigator.push(context, MaterialPageRoute(builder: (_)=>SwriteDataOrder(orderModel: orderModel) )); 

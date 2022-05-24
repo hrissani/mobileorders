@@ -14,12 +14,13 @@ class CustomButton extends StatelessWidget {
     return ButtomAnimationTupCustom(
       tap: (){onTap();},
       child: Container(
-        padding:const EdgeInsets.all(10),
+        width: double.infinity,
+        padding:const EdgeInsets.all(15),
         decoration:const BoxDecoration(
           color: Colors.amber,
           borderRadius: BorderRadius.all(Radius.circular(12))
         ),
-        child: Text(text, style:const TextStyle(color: Colors.black , fontSize: 16),),
+        child: Center(child: Text(text, style:const TextStyle(color: Colors.black , fontSize: 16),)),
       ),
       parent: (childWidget) => 
       Container(

@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:mobileorders/assets/text_styles.dart';
 import 'package:mobileorders/widgets/app_bar.dart';
+import 'package:mobileorders/widgets/image_container.dart';
 
 class StatusOrder extends StatelessWidget {
   const StatusOrder({ Key? key }) : super(key: key);
@@ -25,15 +27,22 @@ class StatusOrder extends StatelessWidget {
   }
   Widget _itemList(List list, int index){
     return Container(
+      margin:const EdgeInsets.symmetric(horizontal: 15, vertical: 10),
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.all(Radius.circular(12)),
+        border: Border.all(color: Colors.black)
+      ),
       child: Row(
         children: [
-          // ImageCustomContainer(
-          //   imageUrl: ""
-          // ),
+          ImageCustomContainer(
+            imageUrl: "https://www.clipartmax.com/png/middle/294-2941282_food-basket-icon-market-basket-icon-png.png"
+          ),
           Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Text("Title"),
-              Text("Description"),
+              Text("Title", style: title,),
+              Text("Description", style: description,),
             ],
           )
         ],

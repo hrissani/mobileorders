@@ -18,7 +18,7 @@ class EditProfile extends StatelessWidget {
     return Scaffold(
       body:SafeArea(
         child:Column(children: [
-          AppBarCustom(title: "Profile"),
+          AppBarCustom(title: "Редактирование профиля"),
           // /profileimage
           Container(
             margin:const EdgeInsets.all(15),

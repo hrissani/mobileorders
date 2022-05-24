@@ -19,8 +19,8 @@ class ImageCustomContainer extends StatelessWidget {
         errorWidget: (context, url, error)  {
           return Container(
           margin:const EdgeInsets.symmetric(horizontal: 4),
-          width: 32,
-          height: 32,
+          width: 120,
+          height: 120,
           decoration: BoxDecoration(
               color: Colors.white,
               borderRadius: BorderRadius.circular(8)
@@ -28,8 +28,8 @@ class ImageCustomContainer extends StatelessWidget {
         },
         imageBuilder: (context, imageProvider) => Container(
           margin:const EdgeInsets.symmetric(horizontal: 4),
-          width: 32,
-          height: 32,
+          width: 120,
+          height: 120,
           decoration: BoxDecoration(
               image: DecorationImage(
                 image: imageProvider,

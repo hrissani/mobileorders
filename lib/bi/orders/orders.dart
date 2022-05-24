@@ -11,20 +11,20 @@ class Orders extends ChangeNotifier{
   List<Order> _listOrders = List.empty(growable: true);
 
   ///Возвращает все
-  getAllOrders(){
+  List<Order>? getAllOrders(){
 
   }
   ///Вставить все заказы
-  setAllOrders(){
-
+  setAllOrders(List<Order> list){
+    _listOrders.addAll(list);
   }
   ///Вставить заказ
-  createOrder({required VoidCallback create}){
-
+  createOrder({required Order order, required VoidCallback create}){
+    _listOrders.add(order);
   }
   ///Возвращает один заказ для просмотра описания
-  getOrder(){
-
+  Order? getOrder(int index){
+    return _listOrders[index];
   }
 }
 

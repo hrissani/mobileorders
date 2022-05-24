@@ -3,6 +3,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:mobileorders/bi/orders/status_order.dart';
 import 'package:mobileorders/bi/profile/profile.dart';
+import 'package:mobileorders/pages/login_page.dart';
 import 'package:mobileorders/pages/main_screen.dart';
 import 'package:mobileorders/repository/repository.dart';
 import 'package:provider/provider.dart';
@@ -17,7 +18,7 @@ void main() async {
   await Firebase.initializeApp();
 
   FirebaseAuth auth = FirebaseAuth.instance;
-  User  user = auth.currentUser!;
+  // User  user = auth.currentUser!;
 
   runApp(MyApp(auth: auth));
 }
@@ -51,7 +52,7 @@ class MyApp extends StatelessWidget {
           primarySwatch: Colors.blue,
         ),
         debugShowCheckedModeBanner: false,
-        home: const MainScreen()
+        home: const LoginPage()
       ),
     );
   }

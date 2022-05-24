@@ -1,5 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import '../bi/orders/model_order.dart';
 import 'api/api_app.dart';
@@ -13,34 +14,55 @@ class RespositoryApp{
   ApiApp _api;
   DataBase _dataBase;
   FirebaseAuth? auth;
-  User  user = FirebaseAuth.instance.currentUser!;
+  User?  user;
+  final Future<SharedPreferences> _prefs = SharedPreferences.getInstance();
 
   RespositoryApp( FirebaseAuth auth ) : 
   _api = ApiApp(), 
   _dataBase = DataBase()
   {
     this.auth = auth;
-    user = auth.currentUser!;
+    user = auth.currentUser;
   }
 
-  autologin(){
-
+  autologin(VoidCallback succeseful, VoidCallback fail)async{
+    final SharedPreferences prefs = await _prefs;
+    String? pasw = prefs.getString('pasw');
+    String? email = prefs.getString('email');
+    if(pasw != null && email != null && pasw != "" && email != "" ){
+      succeseful();
+    }else{
+      fail();
+    }
+  }
+  logout(VoidCallback succeseful)async{
+    final SharedPreferences prefs = await _prefs;
+    // prefs.remove('pasw');
+    // prefs.remove('email');
+    prefs.setString('pasw',"");
+    prefs.setString('email',"");
+    if(auth != null){
+      auth!.signOut();
+    }
+    succeseful();
   }
 
-  registration(String email,String password,String name, VoidCallback loadeStart, VoidCallback loadeEnd) async{
+  registration(String email,String password,String name, VoidCallback loadeStart, VoidCallback loadeEnd, VoidCallback errore,) async{
     await _emailAndPassword(
       AuthMode.register,
       email, password,
       loadeStart, loadeEnd,
-      name: name
+      errore,
+      name: name,
     );
   }
 
-  login(String email,String password, VoidCallback loadeStart, VoidCallback loadeEnd) async{
+  login(String email,String password, VoidCallback loadeStart, VoidCallback loadeEnd, VoidCallback errore,) async{
     await _emailAndPassword(
       AuthMode.login,
       email, password,
-      loadeStart, loadeEnd
+      loadeStart, loadeEnd,
+      errore
     );
   }
 
@@ -48,15 +70,16 @@ class RespositoryApp{
 
   }
 
-  getStatusOrders(){}
+  List<Order>? getStatusOrders(){
 
-  getProfile(){}
+  }
 
-  editProfile(){}
+  // getProfile(){}
+
+  // editProfile(){}
+
   
-
-  
-  Future<void> _emailAndPassword(AuthMode mode,String email,String password, VoidCallback loadeStart, VoidCallback loadeEnd, {String? name}) async {
+  Future<void> _emailAndPassword(AuthMode mode,String email,String password, VoidCallback loadeStart, VoidCallback loadeEnd, VoidCallback errore, {String? name}) async {
      String error = "Ошибка: ";
       loadeStart();
       try {
@@ -71,13 +94,18 @@ class RespositoryApp{
             password: password,
           );
           if(name != null)
-            user.updateDisplayName(name);
+            user!.updateDisplayName(name);
         } 
       } on FirebaseAuthException catch (e) {
           error =error + '${e.message}';
+          errore();
       } catch (e) {
           error =error + '$e';
+          errore();
       } finally {
+        final SharedPreferences prefs = await _prefs;
+        prefs.setString('pasw',password);
+        prefs.setString('email',email);
         loadeEnd();
       }
   }

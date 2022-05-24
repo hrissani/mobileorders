@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 
 import '../pages/catalog.dart';
 import '../pages/profile_page.dart';
-import '../pages/status-order.dart';
+import '../pages/status_order.dart';
 
 class NavBar extends StatefulWidget {
   const NavBar({ Key? key }) : super(key: key);
@@ -27,9 +27,6 @@ class _NavBarState extends State<NavBar> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      // appBar: AppBar(
-      //   title: const Text('BottomNavigationBar Sample'),
-      // ),
       body: SafeArea(
         child: Center(
           child: _widgetOptions.elementAt(_selectedIndex),
@@ -39,15 +36,15 @@ class _NavBarState extends State<NavBar> {
         items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(
             icon: Icon(Icons.home),
-            label: 'Home',
+            label: 'Главная',
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.business),
-            label: 'StatusOrder',
+            label: 'Статус',
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.account_circle_outlined),
-            label: 'Profile',
+            label: 'Профиль',
           ),
         ],
         currentIndex: _selectedIndex,

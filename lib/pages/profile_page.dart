@@ -5,6 +5,7 @@ import 'package:mobileorders/widgets/app_bar.dart';
 import 'package:mobileorders/widgets/buttun.dart';
 import 'package:provider/provider.dart';
 
+import '../assets/text_styles.dart';
 import '../bi/profile/profile.dart';
 import '../bi/user/user_provider.dart';
 import '../repository/repository.dart';
@@ -18,18 +19,24 @@ class ProfilePage extends StatelessWidget {
       body: SafeArea(
         child: Column(
           children: [
-            const AppBarCustom(title: "Profile"),
+            const AppBarCustom(title: "Профиль"),
+            SizedBox(height: 25,),
             // /profileimage 
             _image(),
-            Container(
-              child: _description(Provider.of<UserProvider>(context, listen: false)),
+            Spacer(),
+            Expanded(
+              child: Container(
+                child: _description(Provider.of<UserProvider>(context, listen: false)),
+              ),
             ),
+            Spacer(),
             CustomButton(
               text: "Редактировать профиль", 
               onTap: (){
                 Navigator.push(context, MaterialPageRoute(builder:(_)=> EditProfile()));
               }
-            )
+            ),
+            const SizedBox(height: 25,),
           ],
         ),
       ),
@@ -49,11 +56,11 @@ class ProfilePage extends StatelessWidget {
         color: Colors.white,
       ),
       alignment: Alignment.center,
-      child: ImageIcon(
-        imageProf,
+      child:const Image(
+        image : imageProf,
         // IconsUpDesign.camera,
         // size: 24,
-        color: Colors.grey,
+        // color: Colors.grey,
       ),
     );
   }
@@ -61,21 +68,25 @@ class ProfilePage extends StatelessWidget {
   Widget _description(UserProvider providerUser){
     
     return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         _textDescription("имя пользователя","${providerUser.user}"),
+        const SizedBox(height: 15,),
         _textDescription("логин пользователя","${providerUser.email}"),
+        const SizedBox(height: 15,),
         _textDescription("дата рождения","19.08.1967")
       ],
     );
   }
   _textDescription(String title, content){
     return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Container(
-          child: Text(title),
+          child: Text(title, style:  miniTitle,),
         ),
         Container(
-          child: Text(content),
+          child: Text(content, style: text),
         )
       ],
     );

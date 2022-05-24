@@ -34,6 +34,7 @@ class SwriteDataOrder extends StatelessWidget {
                 final RespositoryApp providerRepo = Provider.of<RespositoryApp>(context, listen: false);
                 final StatusOrders providerStatusOrders = Provider.of<StatusOrders>(context, listen: false);
                 providerOrders.createOrder(
+                  order: orderModel,
                   create: (){
                     providerRepo.createOrder(orderModel);
                     providerStatusOrders.addOrder(orderModel);

@@ -12,7 +12,7 @@ class UserProvider extends ChangeNotifier{
 
   UserProvider(FirebaseAuth auth){
     this.auth = auth;
-    user = auth.currentUser!;
+    user = auth.currentUser;
   }
 
   String? _name;
@@ -21,8 +21,28 @@ class UserProvider extends ChangeNotifier{
   // String? _dateUser;
   String? _passwords;
 
-  String get name  => _name ?? user!.displayName ?? "No name";
-  String get email  => _email ?? user!.email ?? "No email";
+  String get name {
+    if(_name == null){
+      if(user != null){
+        return user!.displayName ?? "No name";
+      } else {
+        return "No name";
+      }
+    } else{
+      return _name ?? "";
+    }
+  }
+  String get email  {
+    if(_email == null){
+      if(user != null){
+        return user!.email ?? "No email";
+      } else {
+        return "No email";
+      }
+    } else{
+      return _email ?? "";
+    }
+  }
   // String get lastname  => _lastname ?? "No lastname";
   // String get dataUser  => _dateUser ?? "No data"; 
 

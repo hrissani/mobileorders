@@ -25,6 +25,8 @@ dependencies:
   flutter_bloc: ^8.0.1
   ### DataBase
   moor_flutter: ^4.1.0 # (sql ORM)
+  ## Локальное хранение маленьких данныых
+  shared_preferences: ^2.0.7
   ## api
   dio: ^4.0.6
   http: ^0.13.3
@@ -54,8 +56,8 @@ dependencies:
   
 ## зорошо работает на Android но не на ios нужно удалять перед пелизам на ios
 flutter_native_splash:
-    image: lib/assets/images/launch_splash.png
-    color: "292C3C"
+    image: icons/logo.png
+    color: "587CC0"
     ios: false
     android_gravity: center
     # web_image_mode: center  
