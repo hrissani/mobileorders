@@ -1,6 +1,7 @@
 
 
 import 'package:flutter/material.dart';
+import 'package:uuid/uuid.dart';
 
 import 'model_order.dart';
 
@@ -11,8 +12,36 @@ class Orders extends ChangeNotifier{
   List<Order> _listOrders = List.empty(growable: true);
 
   ///Возвращает все
-  List<Order>? getAllOrders(){
-
+  List<Order> getAllOrders(){
+    Uuid uuid = Uuid();
+    _listOrders.add(
+      Order(
+        description: "description", 
+        miniDescription: "minidescription", 
+        urlImage: "https://www.clipartmax.com/png/middle/294-2941282_food-basket-icon-market-basket-icon-png.png", 
+        title: "title",
+        idOrder: uuid.v4().toString()
+      )
+    );
+    _listOrders.add(
+      Order(
+        description: "description2", 
+        miniDescription: "minidescription2", 
+        urlImage: "https://www.clipartmax.com/png/middle/294-2941282_food-basket-icon-market-basket-icon-png.png", 
+        title: "title",
+        idOrder: uuid.v4().toString()
+      )
+    );
+     _listOrders.add(
+      Order(
+        description: "description3", 
+        miniDescription: "minidescription3", 
+        urlImage: "https://www.clipartmax.com/png/middle/294-2941282_food-basket-icon-market-basket-icon-png.png", 
+        title: "title",
+        idOrder: uuid.v4().toString()
+      )
+    );
+    return _listOrders;
   }
   ///Вставить все заказы
   setAllOrders(List<Order> list){

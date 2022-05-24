@@ -9,11 +9,31 @@ import 'model_order.dart';
 class StatusOrders extends ChangeNotifier{
   
   ///список типа [Order] (строгая типизация)
-  List<Order> _listStatusOrdersOrders = List.empty(growable: true);
-  List<Order> get listOrderStatus => _listStatusOrdersOrders;
+  List<StatusOrderModel> _listStatusOrdersOrders = List.empty(growable: true);
+  List<StatusOrderModel> get listOrderStatus => _listStatusOrdersOrders;
   
-  addOrder(Order order){
-    _listStatusOrdersOrders.add(order);
+  addOrder(Order order, UserData userdata){
+    _listStatusOrdersOrders.add(StatusOrderModel(order: order, userData: userdata));
   }
   
+}
+
+class StatusOrderModel{
+  Order order;
+  UserData userData;
+  StatusOrderModel({
+    required this.order, 
+    required this.userData
+  });
+}
+
+class UserData{
+  String filed1;
+  String filed2;
+  String filed3;
+  UserData(
+    this.filed1,
+    this.filed2,
+    this.filed3
+  );
 }

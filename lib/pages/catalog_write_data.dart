@@ -37,7 +37,11 @@ class SwriteDataOrder extends StatelessWidget {
                   order: orderModel,
                   create: (){
                     providerRepo.createOrder(orderModel);
-                    providerStatusOrders.addOrder(orderModel);
+                    providerStatusOrders.addOrder(
+                      orderModel,
+                      // Order(idOrder: "idOrder11", urlImage: "urlImage", title: "title12", miniDescription: "miniDescription12", description: "description12"),
+                      UserData( _email.text, _name.text, _password.text)
+                    );
                   }
                 );
               }
@@ -60,21 +64,15 @@ class SwriteDataOrder extends StatelessWidget {
                     borderRadius:const BorderRadius.all(Radius.circular(12))
                   ),
                   // icon: Icon(Icons.login),
-                  hintText: "Email",
+                  hintText: "Фамимлия",
                   helperText: "",
               ),
               validator: (value){
-                  String p = "[a-zA-Z0-9+._%-+]{1,256}@[a-zA-Z0-9][a-zA-Z0-9-]{0,64}(.[a-zA-Z0-9][a-zA-Z0-9-]{0,25})+";
-                  RegExp regExp = new RegExp(p);
                   if(value != null)
                     if (value.isEmpty){
                       return "Пустое поле";
                     }else if(value.length <2){
-                      return "Это не E-mail";
-                    }else if(!value.contains('@')){
-                      return "Это не E-mail";
-                    }else if (regExp.hasMatch(value)){
-                      return null;
+                      return "Это не Фамимлия";
                     }
               }
             ),
@@ -86,7 +84,7 @@ class SwriteDataOrder extends StatelessWidget {
                     borderRadius:const BorderRadius.all(Radius.circular(12))
                   ),
                   // icon: Icon(Icons.login),
-                  hintText: "Naeme",
+                  hintText: "Имя",
                   helperText: "",
               ),
               validator: (value){
@@ -106,15 +104,15 @@ class SwriteDataOrder extends StatelessWidget {
                     borderRadius:const BorderRadius.all(Radius.circular(12))
                   ),
                   // icon: Icon(Icons.login),
-                  hintText: "Password",
+                  hintText: "Описание",
                   helperText: "",
               ),
               validator: (value){
                  if(value != null)
                   if (value.isEmpty){
                     return "Пустое поле";
-                  }else if(value.length <4){
-                    return "Короткий пароль";
+                  }else if(value.length <6){
+                    return "Короткий Описание";
                   }
               }
             ),

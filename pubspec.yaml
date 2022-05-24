@@ -52,6 +52,8 @@ dependencies:
   flutter_native_splash: ^2.1.6
   ##date
   intl: ^0.17.0
+  ##UUID
+  uuid: ^3.0.6
 
   
 ## зорошо работает на Android но не на ios нужно удалять перед пелизам на ios
