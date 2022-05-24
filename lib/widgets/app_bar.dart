@@ -1,5 +1,6 @@
 
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 
 class AppBarCustom extends StatelessWidget {
   final String title;
@@ -19,7 +20,9 @@ class AppBarCustom extends StatelessWidget {
       child: Row(
         children: [
           iconLeft == null ? const SizedBox(width: 20,)  :
-          IconButton(onPressed: (){}, icon: Icon(iconLeft)),
+          IconButton(onPressed: (){
+            Navigator.of(context).pop();
+          }, icon: Icon(iconLeft)),
           const Spacer(),
           Text(title, style:const TextStyle(fontSize: 22, fontWeight: FontWeight.w600, ),),
           const Spacer(),

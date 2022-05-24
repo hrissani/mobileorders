@@ -62,6 +62,7 @@ class UserProvider extends ChangeNotifier{
     // this._lastname = lastname;
     // this._dateUser = DateFormat('yyyy-MM-dd').format(date) + " 00:00:00Z";
     // this._dateUser = date;
+     notifyListeners();
   }
 
   getUserData(){

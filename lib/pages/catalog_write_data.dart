@@ -7,6 +7,7 @@ import '../bi/orders/model_order.dart';
 import '../bi/orders/orders.dart';
 import '../bi/orders/status_order.dart';
 import '../repository/repository.dart';
+import 'main_screen.dart';
 
 class SwriteDataOrder extends StatelessWidget {
   final Order orderModel;
@@ -37,13 +38,18 @@ class SwriteDataOrder extends StatelessWidget {
                   order: orderModel,
                   create: (){
                     providerRepo.createOrder(orderModel);
-                    providerStatusOrders.addOrder(
+                    providerStatusOrders.addOrderSta(
                       orderModel,
                       // Order(idOrder: "idOrder11", urlImage: "urlImage", title: "title12", miniDescription: "miniDescription12", description: "description12"),
                       UserData( _email.text, _name.text, _password.text)
                     );
                   }
                 );
+                Navigator.pushAndRemoveUntil(
+                    context,
+                    MaterialPageRoute(
+                        builder: (_) =>
+                            const MainScreen()),  ModalRoute.withName('/home'));
               }
             })
           ],

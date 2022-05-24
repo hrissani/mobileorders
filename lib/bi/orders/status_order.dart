@@ -12,8 +12,10 @@ class StatusOrders extends ChangeNotifier{
   List<StatusOrderModel> _listStatusOrdersOrders = List.empty(growable: true);
   List<StatusOrderModel> get listOrderStatus => _listStatusOrdersOrders;
   
-  addOrder(Order order, UserData userdata){
+  addOrderSta(Order order, UserData userdata){
     _listStatusOrdersOrders.add(StatusOrderModel(order: order, userData: userdata));
+    print("LEERR"+_listStatusOrdersOrders.length.toString());
+    notifyListeners();
   }
   
 }

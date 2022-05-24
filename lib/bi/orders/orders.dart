@@ -46,10 +46,13 @@ class Orders extends ChangeNotifier{
   ///Вставить все заказы
   setAllOrders(List<Order> list){
     _listOrders.addAll(list);
+     notifyListeners();
   }
   ///Вставить заказ
   createOrder({required Order order, required VoidCallback create}){
     _listOrders.add(order);
+    create();
+     notifyListeners();
   }
   ///Возвращает один заказ для просмотра описания
   Order? getOrder(int index){
