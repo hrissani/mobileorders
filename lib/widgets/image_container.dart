@@ -6,9 +6,11 @@ import 'package:optimized_cached_image/optimized_cached_image.dart';
 
 class ImageCustomContainer extends StatelessWidget {
   final String imageUrl;
+  final double? size;
   const ImageCustomContainer({ 
     Key? key,
-    required this.imageUrl 
+    required this.imageUrl ,
+    this.size
   }) : super(key: key);
 
   @override
@@ -28,8 +30,8 @@ class ImageCustomContainer extends StatelessWidget {
         },
         imageBuilder: (context, imageProvider) => Container(
           margin:const EdgeInsets.symmetric(horizontal: 4),
-          width: 120,
-          height: 120,
+          width:size == null ? 120 : size,
+          height: size == null ? 120 : size,
           decoration: BoxDecoration(
               image: DecorationImage(
                 image: imageProvider,

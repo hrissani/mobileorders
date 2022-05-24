@@ -53,6 +53,8 @@ class StatusOrder extends StatelessWidget {
               const SizedBox(height: 8,),
               Text( list[index].order.description, style: description,),
               const SizedBox(height: 8,),
+              Text( list[index].userData.filed1, style: description,),
+              const SizedBox(height: 8,),
               const Icon(Icons.access_time_rounded, color: Colors.blue,)
             ],
           )

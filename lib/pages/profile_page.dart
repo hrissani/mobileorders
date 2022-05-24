@@ -30,11 +30,14 @@ class ProfilePage extends StatelessWidget {
               ),
             ),
             Spacer(),
-            CustomButton(
-              text: "Редактировать профиль", 
-              onTap: (){
-                Navigator.push(context, MaterialPageRoute(builder:(_)=> EditProfile()));
-              }
+            Container(
+              padding:const  EdgeInsets.all(20),
+              child: CustomButton(
+                text: "Редактировать профиль", 
+                onTap: (){
+                  Navigator.push(context, MaterialPageRoute(builder:(_)=> EditProfileM()));
+                }
+              ),
             ),
             const SizedBox(height: 25,),
           ],
@@ -70,7 +73,7 @@ class ProfilePage extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        _textDescription("имя пользователя","${providerUser.user}"),
+        _textDescription("имя пользователя","${providerUser.name}"),
         const SizedBox(height: 15,),
         _textDescription("логин пользователя","${providerUser.email}"),
         const SizedBox(height: 15,),

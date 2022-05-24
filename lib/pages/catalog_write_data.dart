@@ -27,31 +27,34 @@ class SwriteDataOrder extends StatelessWidget {
       body: SafeArea(
         child: Column(
           children: [
-            const AppBarCustom(title: "Ввод данных"),
+            const AppBarCustom(iconLeft: Icons.arrow_back_ios_new , title: "Ввод данных"),
             _textFieldList(),
-            CustomButton(text: "Поддтвердить", onTap: (){
-              if (_formKey.currentState?.validate() ?? false) {
-                final Orders providerOrders = Provider.of<Orders>(context, listen: false);
-                final RespositoryApp providerRepo = Provider.of<RespositoryApp>(context, listen: false);
-                final StatusOrders providerStatusOrders = Provider.of<StatusOrders>(context, listen: false);
-                providerOrders.createOrder(
-                  order: orderModel,
-                  create: (){
-                    providerRepo.createOrder(orderModel);
-                    providerStatusOrders.addOrderSta(
-                      orderModel,
-                      // Order(idOrder: "idOrder11", urlImage: "urlImage", title: "title12", miniDescription: "miniDescription12", description: "description12"),
-                      UserData( _email.text, _name.text, _password.text)
-                    );
-                  }
-                );
-                Navigator.pushAndRemoveUntil(
-                    context,
-                    MaterialPageRoute(
-                        builder: (_) =>
-                            const MainScreen()),  ModalRoute.withName('/home'));
-              }
-            })
+            Container(
+              padding:const EdgeInsets.all(25),
+              child: CustomButton(text: "Поддтвердить", onTap: (){
+                if (_formKey.currentState?.validate() ?? false) {
+                  final Orders providerOrders = Provider.of<Orders>(context, listen: false);
+                  final RespositoryApp providerRepo = Provider.of<RespositoryApp>(context, listen: false);
+                  final StatusOrders providerStatusOrders = Provider.of<StatusOrders>(context, listen: false);
+                  providerOrders.createOrder(
+                    order: orderModel,
+                    create: (){
+                      providerRepo.createOrder(orderModel);
+                      providerStatusOrders.addOrderSta(
+                        orderModel,
+                        // Order(idOrder: "idOrder11", urlImage: "urlImage", title: "title12", miniDescription: "miniDescription12", description: "description12"),
+                        UserData( _email.text, _name.text, _password.text)
+                      );
+                    }
+                  );
+                  Navigator.pushAndRemoveUntil(
+                      context,
+                      MaterialPageRoute(
+                          builder: (_) =>
+                              const MainScreen()),  ModalRoute.withName('/home'));
+                }
+              }),
+            )
           ],
         ),
       ),
@@ -60,69 +63,72 @@ class SwriteDataOrder extends StatelessWidget {
   Widget _textFieldList(){
     return Form(
       key: _formKey,
-      child: Column(
-        children: [
-          TextFormField(
-              controller: _email,
-              decoration:const InputDecoration(
-                  border: OutlineInputBorder(
-                    // borderSide: BorderSide(color: noerrore ? Colors.grey : Colors.red ),
-                    borderRadius:const BorderRadius.all(Radius.circular(12))
-                  ),
-                  // icon: Icon(Icons.login),
-                  hintText: "Фамимлия",
-                  helperText: "",
+      child: Container(
+        padding:const EdgeInsets.all(15),
+        child: Column(
+          children: [
+            TextFormField(
+                controller: _email,
+                decoration:const InputDecoration(
+                    border: OutlineInputBorder(
+                      // borderSide: BorderSide(color: noerrore ? Colors.grey : Colors.red ),
+                      borderRadius:const BorderRadius.all(Radius.circular(12))
+                    ),
+                    // icon: Icon(Icons.login),
+                    hintText: "Фамимлия",
+                    helperText: "",
+                ),
+                validator: (value){
+                    if(value != null)
+                      if (value.isEmpty){
+                        return "Пустое поле";
+                      }else if(value.length <2){
+                        return "Это не Фамимлия";
+                      }
+                }
               ),
-              validator: (value){
+               TextFormField(
+                controller: _name,
+                decoration:const InputDecoration(
+                    border: OutlineInputBorder(
+                      // borderSide: BorderSide(color: noerrore ? Colors.grey : Colors.red ),
+                      borderRadius:const BorderRadius.all(Radius.circular(12))
+                    ),
+                    // icon: Icon(Icons.login),
+                    hintText: "Имя",
+                    helperText: "",
+                ),
+                validator: (value){
                   if(value != null)
                     if (value.isEmpty){
                       return "Пустое поле";
                     }else if(value.length <2){
-                      return "Это не Фамимлия";
+                      return "Это не имя";
                     }
-              }
-            ),
-             TextFormField(
-              controller: _name,
-              decoration:const InputDecoration(
-                  border: OutlineInputBorder(
-                    // borderSide: BorderSide(color: noerrore ? Colors.grey : Colors.red ),
-                    borderRadius:const BorderRadius.all(Radius.circular(12))
-                  ),
-                  // icon: Icon(Icons.login),
-                  hintText: "Имя",
-                  helperText: "",
+                }
               ),
-              validator: (value){
-                if(value != null)
-                  if (value.isEmpty){
-                    return "Пустое поле";
-                  }else if(value.length <2){
-                    return "Это не имя";
-                  }
-              }
-            ),
-             TextFormField(
-              controller: _password,
-              decoration:const InputDecoration(
-                  border: OutlineInputBorder(
-                    // borderSide: BorderSide(color: noerrore ? Colors.grey : Colors.red ),
-                    borderRadius:const BorderRadius.all(Radius.circular(12))
-                  ),
-                  // icon: Icon(Icons.login),
-                  hintText: "Описание",
-                  helperText: "",
+               TextFormField(
+                controller: _password,
+                decoration:const InputDecoration(
+                    border: OutlineInputBorder(
+                      // borderSide: BorderSide(color: noerrore ? Colors.grey : Colors.red ),
+                      borderRadius:const BorderRadius.all(Radius.circular(12))
+                    ),
+                    // icon: Icon(Icons.login),
+                    hintText: "Описание",
+                    helperText: "",
+                ),
+                validator: (value){
+                   if(value != null)
+                    if (value.isEmpty){
+                      return "Пустое поле";
+                    }else if(value.length <6){
+                      return "Короткий Описание";
+                    }
+                }
               ),
-              validator: (value){
-                 if(value != null)
-                  if (value.isEmpty){
-                    return "Пустое поле";
-                  }else if(value.length <6){
-                    return "Короткий Описание";
-                  }
-              }
-            ),
-        ],
+          ],
+        ),
       ),
     );
   }

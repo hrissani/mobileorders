@@ -20,15 +20,18 @@ class MoreInfoOrder extends StatelessWidget {
           const Spacer(),
           _content(orderModel),
           const Spacer(),
-          CustomButton(
-              text: "Заказать",
-              onTap: () {
-                Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (_) =>
-                            SwriteDataOrder(orderModel: orderModel)));
-              }),
+          Container(
+            padding: const EdgeInsets.all(20),
+            child: CustomButton(
+                text: "Заказать",
+                onTap: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (_) =>
+                              SwriteDataOrder(orderModel: orderModel)));
+                }),
+          ),
               SizedBox(height: 20,)
         ]),
       ),
@@ -45,6 +48,7 @@ class MoreInfoOrder extends StatelessWidget {
       child: Column(
         children: [
           ImageCustomContainer(
+            size: 200,
             imageUrl: orderModel.urlImage
               ),
           Text(

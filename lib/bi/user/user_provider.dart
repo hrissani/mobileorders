@@ -24,9 +24,9 @@ class UserProvider extends ChangeNotifier{
   String get name {
     if(_name == null){
       if(user != null){
-        return user!.displayName ?? "No name";
+        return user!.displayName ?? "Настя";
       } else {
-        return "No name";
+        return "Настя";
       }
     } else{
       return _name ?? "";
