@@ -35,7 +35,7 @@ dependencies:
   dartz: ^0.10.0
   ## Firebase service for auth (Google)
   firebase_core: ^1.17.0
-  firebase_auth_oauth: ^1.2.0
+  # firebase_auth_oauth: ^1.2.0
   firebase_auth: ^3.3.18 ###
   ### Заставка при прогрузки, чтобы не вылезали стремные артифакты
   shimmer: ^2.0.0
@@ -89,7 +89,7 @@ flutter:
   assets:
     - icons/
     - images/
-    - assets/
+    # - assets/
   # To add assets to your application, add an assets section, like this:
   # assets:
   #   - images/a_dot_burr.jpeg

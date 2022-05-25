@@ -15,16 +15,20 @@ import 'bi/user/user_provider.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp();
+    ///Закоментировать для поддерки на всех платформах
+  // await Firebase.initializeApp();
 
-  FirebaseAuth auth = FirebaseAuth.instance;
+  FirebaseAuth? auth ;
+   ///Закоментировать для поддерки на всех платформах
+  // auth = FirebaseAuth.instance;
+   ///Закоментировать для поддерки на всех платформах
   // User  user = auth.currentUser!;
 
   runApp(MyApp(auth: auth));
 }
 
 class MyApp extends StatelessWidget {
-  FirebaseAuth auth;
+  FirebaseAuth? auth;
   MyApp({Key? key,
    required this.auth,
   }) : super(key: key);

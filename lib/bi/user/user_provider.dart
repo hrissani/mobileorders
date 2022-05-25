@@ -10,9 +10,11 @@ class UserProvider extends ChangeNotifier{
   FirebaseAuth? auth;
   User?  user;
 
-  UserProvider(FirebaseAuth auth){
+  UserProvider(FirebaseAuth? auth){
     this.auth = auth;
-    user = auth.currentUser;
+    if(auth != null){
+      user = auth.currentUser;
+    }
   }
 
   String? _name;
