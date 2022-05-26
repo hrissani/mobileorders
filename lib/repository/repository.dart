@@ -17,12 +17,15 @@ class RespositoryApp{
   User?  user;
   final Future<SharedPreferences> _prefs = SharedPreferences.getInstance();
 
-  RespositoryApp( FirebaseAuth auth ) : 
+  RespositoryApp( FirebaseAuth? auth ) : 
   _api = ApiApp(), 
   _dataBase = DataBase()
   {
     this.auth = auth;
-    user = auth.currentUser;
+    if(auth != null){
+      user = auth.currentUser;
+    }
+    
   }
 
   autologin(VoidCallback succeseful, VoidCallback fail)async{

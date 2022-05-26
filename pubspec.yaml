@@ -77,8 +77,8 @@ dev_dependencies:
   # dcdg: ^4.0.0
   
   ## Он всегда лежить в корневом каталоге в пользователе, потому что это debug ключ
-  # keytool -list -v -keystore "C:\Users\k4fos\.android\debug.keystore" -alias androiddebugkey -storepass android -keypass android
-
+  # keytool -list -v -keystore "C:\Users\" -alias androiddebugkey -storepass android -keypass android
+  # start ms-settings:developers
 
 flutter:
 
@@ -89,7 +89,7 @@ flutter:
   assets:
     - icons/
     - images/
-    - assets/
+    # - assets/
   # To add assets to your application, add an assets section, like this:
   # assets:
   #   - images/a_dot_burr.jpeg
