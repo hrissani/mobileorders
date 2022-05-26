@@ -1,41 +1,41 @@
 {
   "project_info": {
-    "project_number": "363484185591",
-    "project_id": "nasttest-19623",
-    "storage_bucket": "nasttest-19623.appspot.com"
+    "project_number": "647862281200",
+    "project_id": "diplom-17e89",
+    "storage_bucket": "diplom-17e89.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:363484185591:android:ac070d4e5ed9285fd364f2",
+        "mobilesdk_app_id": "1:647862281200:android:bb5f2bee8c359fb44ff335",
         "android_client_info": {
           "package_name": "com.example.mobileorders"
         }
       },
       "oauth_client": [
         {
-          "client_id": "363484185591-fiemlbpuveirhknqu1mr7ii3h1f7uvgr.apps.googleusercontent.com",
+          "client_id": "647862281200-pj6q91i19c7e595823jg2hrnvkh8mhkg.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
             "package_name": "com.example.mobileorders",
-            "certificate_hash": "37ca40006334d986e24f3c9da758854f0fd1ab7b"
+            "certificate_hash": "4e15075e56b60b3427a5fa5bc9da23f1a027863b"
           }
         },
         {
-          "client_id": "363484185591-fkt0rqvuautjc2982u6t5eavv7surfhb.apps.googleusercontent.com",
+          "client_id": "647862281200-n8mg7vqb8vkgv6dipglk2b0r4o20bl4t.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyAu8v-cCmlBJVNLzep1LNR5A9jF9eXziTw"
+          "current_key": "AIzaSyAJNehuTUdKOlEMP8HetCw_Jc_jZpEf8LE"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "363484185591-fkt0rqvuautjc2982u6t5eavv7surfhb.apps.googleusercontent.com",
+              "client_id": "647862281200-n8mg7vqb8vkgv6dipglk2b0r4o20bl4t.apps.googleusercontent.com",
               "client_type": 3
             }
           ]
