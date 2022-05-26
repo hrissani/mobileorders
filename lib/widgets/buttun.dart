@@ -17,7 +17,7 @@ class CustomButton extends StatelessWidget {
         width: double.infinity,
         padding:const EdgeInsets.all(15),
         decoration:const BoxDecoration(
-          color: Colors.amber,
+          color: Color.fromARGB(255, 108, 189, 255),
           borderRadius: BorderRadius.all(Radius.circular(12))
         ),
         child: Center(child: Text(text, style:const TextStyle(color: Colors.black , fontSize: 16),)),

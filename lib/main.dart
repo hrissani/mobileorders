@@ -16,13 +16,13 @@ import 'bi/user/user_provider.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
     ///Закоментировать для поддерки на всех платформах
-  // await Firebase.initializeApp();
+  await Firebase.initializeApp();
 
   FirebaseAuth? auth ;
    ///Закоментировать для поддерки на всех платформах
-  // auth = FirebaseAuth.instance;
+  auth = FirebaseAuth.instance;
    ///Закоментировать для поддерки на всех платформах
-  // User  user = auth.currentUser!;
+  
 
   runApp(MyApp(auth: auth));
 }

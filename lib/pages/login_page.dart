@@ -32,7 +32,7 @@ class _LoginPageState extends State<LoginPage> {
     return Scaffold(
       body: SafeArea(
         child: Container(
-          margin: EdgeInsets.only(top: 35, left: 25, right: 25),
+          margin: EdgeInsets.only(top: 0, left: 0, right: 0),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             mainAxisAlignment: MainAxisAlignment.center,
@@ -42,14 +42,26 @@ class _LoginPageState extends State<LoginPage> {
                 child: _image()
                 // AssetImage() ,
               ),
-              //titel
-              Container(
-                margin: EdgeInsets.symmetric(vertical: 20),
-                child:Text("Вход", style: TextStyle(fontSize: 22, fontWeight: FontWeight.w700),) ,
-              ),
+               SizedBox(height: 70,),
               Expanded(
-                child: _field(context),
-              ),
+                child: Container(
+                   margin: EdgeInsets.only(top: 0, left: 25, right: 25),
+                  child: Column(
+                    children: [
+                     Container(
+                    margin: EdgeInsets.symmetric(vertical: 20),
+                    child:Text("Вход", style: TextStyle(fontSize: 22, fontWeight: FontWeight.w700,
+                    fontFamily: "Schyler"),) ,
+                  ),
+                  Expanded(
+                    child: _field(context),
+                  ), 
+                    ],
+                  ),
+                ),
+              )
+              //titel
+              
             ],
           ),
         ),
@@ -58,26 +70,20 @@ class _LoginPageState extends State<LoginPage> {
     );
   }
 
-  static const AssetImage logo = AssetImage('icons/logo.png');
+  static const AssetImage logo = AssetImage('images/ap_image.jpeg');
   Widget _image(){
+    double w = MediaQuery.of(context).size.width;
+    double h = MediaQuery.of(context).size.height;
     // context.read<Profile>().getImageUrl()
     
     return Container(
-      height: 120,
-      width: 120,
-      margin:
-          EdgeInsets.symmetric(horizontal: 100),
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(100),
-        color: Colors.white,
-      ),
-      alignment: Alignment.center,
-      child:const Image(
-        image : logo,
-        // IconsUpDesign.camera,
-        // size: 24,
-        // color: Colors.grey,
-      ),
+            width: w,
+            height: h * 0.3,
+      decoration: const BoxDecoration(
+                image: DecorationImage(
+                    image: logo,
+                    fit: BoxFit.cover)
+      )
     );
   }
 
@@ -158,7 +164,7 @@ class _LoginPageState extends State<LoginPage> {
                 onTap: (){
                   Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (_)=> RegisterPage()), ModalRoute.withName('/registration'));
                 },
-                child:const Text("Регистрация", style: TextStyle(color: Colors.blue),),
+                child:const Text("Регистрация", style: TextStyle(color: Colors.blue, fontFamily: "Schyler2", fontWeight: FontWeight.w600)),
               ),
               SizedBox(height: 25,),
                CustomButton(

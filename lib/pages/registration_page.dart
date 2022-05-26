@@ -32,13 +32,13 @@ class RegisterPage extends StatelessWidget {
             children: [
               //Image
               Container(
-                child: _image()
+                child: _image(context)
                 // AssetImage() ,
               ),
               //titel
               Container(
                 margin: EdgeInsets.symmetric(vertical: 20),
-                child:Text("Регистрация", style: TextStyle(fontSize: 22, fontWeight: FontWeight.w700),) ,
+                child:Text("Регистрация", style: TextStyle(fontSize: 22, fontWeight: FontWeight.w700, fontFamily: "Schyler"),) ,
               ),
               Expanded(
                 child: _field(context),
@@ -51,26 +51,20 @@ class RegisterPage extends StatelessWidget {
     );
   }
 
-  static const AssetImage logo = AssetImage('icons/logo.png');
-  Widget _image(){
+  static const AssetImage logo = AssetImage('images/ap_image.jpeg');
+  Widget _image(BuildContext context){
+    double w = MediaQuery.of(context).size.width;
+    double h = MediaQuery.of(context).size.height;
     // context.read<Profile>().getImageUrl()
     
     return Container(
-      height: 120,
-      width: 120,
-      margin:
-          EdgeInsets.symmetric(horizontal: 100),
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(100),
-        color: Colors.white,
-      ),
-      alignment: Alignment.center,
-      child:const Image(
-        image : logo,
-        // IconsUpDesign.camera,
-        // size: 24,
-        // color: Colors.grey,
-      ),
+            width: w,
+            height: h * 0.3,
+      decoration: const BoxDecoration(
+                image: DecorationImage(
+                    image: logo,
+                    fit: BoxFit.cover)
+      )
     );
   }
 
@@ -108,7 +102,7 @@ class RegisterPage extends StatelessWidget {
               }
             ),
              TextFormField(
-              controller: TextEditingController(),
+              controller: _name,
               decoration:const InputDecoration(
                   border: OutlineInputBorder(
                     // borderSide: BorderSide(color: noerrore ? Colors.grey : Colors.red ),
@@ -151,7 +145,7 @@ class RegisterPage extends StatelessWidget {
                 onTap: (){
                   Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (_)=> LoginPage()), ModalRoute.withName('/login'));
                 },
-                child:const Text("Вход", style: TextStyle(color: Colors.blue),),
+                child:const Text("Вход", style: TextStyle(color: Colors.blue, fontFamily: "Schyler2", fontWeight: FontWeight.w600),),
               ),
               SizedBox(height: 25,),
                 CustomButton(
