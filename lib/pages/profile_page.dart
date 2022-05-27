@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:mobileorders/pages/edit_profile_page.dart';
 import 'package:mobileorders/widgets/app_bar.dart';
@@ -11,7 +10,7 @@ import '../bi/user/user_provider.dart';
 import '../repository/repository.dart';
 
 class ProfilePage extends StatelessWidget {
-  const ProfilePage({ Key? key }) : super(key: key);
+  const ProfilePage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -20,47 +19,52 @@ class ProfilePage extends StatelessWidget {
         child: Column(
           children: [
             const AppBarCustom(title: "Профиль"),
-            SizedBox(height: 25,),
-            // /profileimage 
+            SizedBox(
+              height: 25,
+            ),
+            // /profileimage
             _image(),
             Spacer(),
             Expanded(
               child: Container(
-                child: _description(Provider.of<UserProvider>(context, listen: false)),
+                child: _description(
+                    Provider.of<UserProvider>(context, listen: false)),
               ),
             ),
             Spacer(),
             Container(
-              padding:const  EdgeInsets.all(20),
+              padding: const EdgeInsets.all(20),
               child: CustomButton(
-                text: "Редактировать профиль", 
-                onTap: (){
-                  Navigator.push(context, MaterialPageRoute(builder:(_)=> EditProfileM()));
-                }
-              ),
+                  text: "Редактировать профиль",
+                  onTap: () {
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (_) => EditProfileM()));
+                  }),
             ),
-            const SizedBox(height: 25,),
+            const SizedBox(
+              height: 25,
+            ),
           ],
         ),
       ),
     );
   }
- static const AssetImage imageProf = AssetImage('images/avatar.png');
-  Widget _image(){
+
+  static const AssetImage imageProf = AssetImage('images/avatar.png');
+  Widget _image() {
     // context.read<Profile>().getImageUrl()
-    
+
     return Container(
-      height: 56,
-      width: 56,
-      margin:
-          EdgeInsets.symmetric(horizontal: 16),
+      height: 120,
+      width: 120,
+      margin: EdgeInsets.symmetric(horizontal: 16),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(100),
         color: Colors.white,
       ),
       alignment: Alignment.center,
-      child:const Image(
-        image : imageProf,
+      child: const Image(
+        image: imageProf,
         // IconsUpDesign.camera,
         // size: 24,
         // color: Colors.grey,
@@ -68,25 +72,32 @@ class ProfilePage extends StatelessWidget {
     );
   }
 
-  Widget _description(UserProvider providerUser){
-    
+  Widget _description(UserProvider providerUser) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        _textDescription("имя пользователя","${providerUser.name}"),
-        const SizedBox(height: 15,),
-        _textDescription("логин пользователя","${providerUser.email}"),
-        const SizedBox(height: 15,),
-        _textDescription("дата рождения","19.08.1967")
+        _textDescription("Имя пользователя", "${providerUser.name}"),
+        const SizedBox(
+          height: 15,
+        ),
+        _textDescription("Логин пользователя", "${providerUser.email}"),
+        const SizedBox(
+          height: 15,
+        ),
+        _textDescription("Дата рождения", "19.08.1967")
       ],
     );
   }
-  _textDescription(String title, content){
+
+  _textDescription(String title, content) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Container(
-          child: Text(title, style:  miniTitle,),
+          child: Text(
+            title,
+            style: miniTitle,
+          ),
         ),
         Container(
           child: Text(content, style: text),

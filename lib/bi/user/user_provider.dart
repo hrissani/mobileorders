@@ -1,18 +1,14 @@
-
-
-
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
-class UserProvider extends ChangeNotifier{
-
+class UserProvider extends ChangeNotifier {
   FirebaseAuth? auth;
-  User?  user;
+  User? user;
 
-  UserProvider(FirebaseAuth? auth){
+  UserProvider(FirebaseAuth? auth) {
     this.auth = auth;
-    if(auth != null){
+    if (auth != null) {
       user = auth.currentUser;
     }
   }
@@ -24,52 +20,48 @@ class UserProvider extends ChangeNotifier{
   String? _passwords;
 
   String get name {
-    if(_name == null){
-      if(user != null){
-        return user!.displayName ?? "Настя";
+    if (_name == null) {
+      if (user != null) {
+        return user!.displayName ?? "Name";
       } else {
-        return "Настя";
+        return "Name";
       }
-    } else{
+    } else {
       return _name ?? "";
     }
   }
-  String get email  {
-    if(_email == null){
-      if(user != null){
+
+  String get email {
+    if (_email == null) {
+      if (user != null) {
         return user!.email ?? "No email";
       } else {
         return "No email";
       }
-    } else{
+    } else {
       return _email ?? "";
     }
   }
   // String get lastname  => _lastname ?? "No lastname";
-  // String get dataUser  => _dateUser ?? "No data"; 
+  // String get dataUser  => _dateUser ?? "No data";
 
   // DateTime get dataTimeUser  =>  DateFormat('yyyy-MM-dd HH:mm:ss').parse(_dateUser!);
 
   // DateFormat.yMMMMd('ru')
-  // .format(_dateUser??""); 
+  // .format(_dateUser??"");
 
-
-
-
-  setUserData({required String name,required String email, 
-  // lastname, date,
-   required VoidCallback auth}){
+  setUserData(
+      {required String name,
+      required String email,
+      // lastname, date,
+      required VoidCallback auth}) {
     this._name = name;
     this._email = email;
     // this._lastname = lastname;
     // this._dateUser = DateFormat('yyyy-MM-dd').format(date) + " 00:00:00Z";
     // this._dateUser = date;
-     notifyListeners();
+    notifyListeners();
   }
 
-  getUserData(){
-
-  }
-
-
+  getUserData() {}
 }
